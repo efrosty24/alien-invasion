@@ -1,3 +1,4 @@
-# DEMO 2: Local -> GitHub
+# Alien Invasion using pygame 
 
-learning how to go from a local repositiory to GitHub
+Following the guidelines to make Alien Invasion with pygame through **"Python Crash Course" by Eric Matthes**
+
