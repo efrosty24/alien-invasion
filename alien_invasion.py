@@ -36,6 +36,9 @@ class AlienInvasion:
         # Make the Play button
         self.play_button = Button(self, "Play")
 
+        # Load the high score
+        self.stats.high_score = self.stats.load_high_score()
+
 
     def run_game(self):
         '''Start main loop for the game'''
@@ -163,6 +166,7 @@ class AlienInvasion:
         else:
             self.stats.game_active = False
             pygame.mouse.set_visible(True)
+            self.stats.save_high_score()
     
     def _create_alien(self, alien_number, row_number):
         ''' Create an alien and place it in the row'''
@@ -170,7 +174,7 @@ class AlienInvasion:
         alien_width, alien_height = alien.rect.size
         alien.x = alien_width + 2 * alien_width * alien_number
         alien.rect.x = alien.x
-        alien.rect.y = alien_height + 2 * alien.rect.height * row_number
+        alien.rect.y = alien_height + 2 * alien.rect.height * row_number + 50
         self.aliens.add(alien)
 
     def _update_aliens(self):
@@ -186,7 +190,7 @@ class AlienInvasion:
         self._check_aliens_bottom()
 
     def _check_aliens_bottom(self):
-        '''Check ig any alien has reached the bottom of the screen'''
+        '''Check if any alien has reached the bottom of the screen'''
         screen_rect = self.screen.get_rect()
         for alien in self.aliens.sprites():
             if alien.rect.bottom >= screen_rect.bottom:

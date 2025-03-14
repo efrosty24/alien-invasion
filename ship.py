@@ -13,7 +13,7 @@ class Ship(Sprite):
         #load the ship image and get its rect
 
         self.image = pygame.image.load('assets/ship.bmp')
-        self.image = pygame.transform.scale(self.image, (40, 40))
+        self.image = pygame.transform.scale(self.image, (60, 60))
         self.rect = self.image.get_rect()
 
         self.rect.midbottom = self.screen_rect.midbottom 

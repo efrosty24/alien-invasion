@@ -15,8 +15,8 @@ class Scoreboard:
         self.stats = ai_game.stats
 
         # Font settings for the scoring information
-        self.text_color = (30, 30, 30)  # Dark gray
-        self.font = pygame.font.SysFont(None, 48)
+        self.text_color = (250, 236, 226) # soft white
+        self.font = pygame.font.Font("assets/invasion.otf", 30)
 
         # Prepare the initial score image
         self.prep_score()
@@ -29,19 +29,19 @@ class Scoreboard:
         self.ships = Group()
         for ship_number in range(self.stats.ships_left):
             ship = Ship(self.ai_game)
-            ship.rect.x = 10 + ship_number * ship.rect.width
-            ship.rect.y = 10
+            ship.rect.x = self.screen_rect.width - ship.rect.width -ship_number * ship.rect.width - 10
+            ship.rect.y = self.screen_rect.height // 100
             self.ships.add(ship)
 
     def prep_level(self):
         '''Turn the level into a rendered image'''
         level_str = str(self.stats.level)
-        self.level_image = self.font.render(level_str, True, self.text_color, self.settings.bg_color)
+        self.level_image = self.font.render(f'Level: {level_str}', True, self.text_color, self.settings.bg_color)
 
         # Position the level below the score
         self.level_rect = self.level_image.get_rect()
-        self.level_rect.right = self.score_rect.right
-        self.level_rect.top = self.score_rect.bottom + 10
+        self.level_rect.left = self.score_rect.left
+        self.level_rect.top = self.score_rect.bottom + 5
 
     def prep_high_score(self):
         '''Turn the high score into a rendered image'''
@@ -52,7 +52,7 @@ class Scoreboard:
         # Center the high score at the top of the screen
         self.high_score_rect = self.high_score_image.get_rect()
         self.high_score_rect.centerx = self.screen_rect.centerx
-        self.high_score_rect.top = self.screen_rect.top
+        self.high_score_rect.top = self.screen_rect.height // 100
 
 
     def prep_score(self):
@@ -63,8 +63,8 @@ class Scoreboard:
 
         # Display the score at the top right of the screen
         self.score_rect = self.score_image.get_rect()
-        self.score_rect.right = self.screen_rect.right - 20
-        self.score_rect.top = 20
+        self.score_rect.left = self.screen_rect.left + 20
+        self.score_rect.top = self.screen_rect.height // 100
 
     def show_score(self):
         '''Draw score to the screen'''

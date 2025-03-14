@@ -9,8 +9,8 @@ class Button:
         # Set the dimensions and properties of the button
         self.width, self.height = 200, 50
         self.button_color = (11, 194, 118)
-        self.text_color = (255, 255, 255)
-        self.font = pygame.font.SysFont(None, 48)
+        self.text_color = (4, 47, 9)
+        self.font = pygame.font.Font("assets/invasion.otf", 40)
 
         # Build the buttons's rect object and center it.
 
