@@ -8,6 +8,9 @@ class Settings:
         self.screen_height = 800
         self.bg_color = (59, 59, 59) # dark gray
 
+        # Game over settings
+        self.game_over_color = (198, 24, 15) # red
+
         # Ship settings
         self.ship_speed = 1.5
         self.ship_limit = 3
@@ -16,7 +19,7 @@ class Settings:
         self.bullet_width = 3
         self.bullet_height = 15
         self.bullet_color = (25, 230, 25) # green
-        self.bullets_allowed = 10
+        self.bullets_allowed = 6
 
         # Alien settings
         self.fleet_drop_speed = 10
